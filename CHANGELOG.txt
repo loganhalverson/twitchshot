@@ -1,0 +1,46 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+The date format is YYYY-MM-DD. The version format is X.Y.Z.
+
+## [0.1.2] - 2020-07-22
+
+### Added -
+- Imported moviepy 
+- Added clip_data value 'filename'
+
+### Changed - 
+- Optimized validateClips()
+- Reformatted Twitch method names and calls to make more sense.
+
+### Notes - 
+There's no input validation for the Twitch parameters. I should have some indication at
+least for the filter, because that relies on pre-defined keywords. There also isn't 
+custom directory implementation -- I'll get that put in tomorrow.
+
+
+## [0.1.1] - 2020-07-20
+
+### Added - 
+- Implemented method t.generateEmbed()
+
+
+## [0.1.0] - 2020-07-19 
+
+### Added -
+- Implemented clip validation through t.validateClips()
+- Implemented clip value ['clip_valid']
+- Created t.downloadClips()
+- Added t.print() function in class Twitch to print values in a given clip_data dict.
+
+### Changed - 
+- Moved testing code into function v.downloadClips in class Video.
+
+### Notes -
+The current implementation of validating clips is atrocious from a user standpoint.
+All of the clip thumbnails are opened one by one, and they can't be closed as of yet. This will be much
+better once the PyQT GUI is implemented, but for now it's pretty terrible.
+I think I'll move on to PyQT implementation tomorrow. As of now, the program is capable of a full
+retrieval and download of clips given a certain game, so I want a proper GUI before I move on to
+concatenation and intro/outro.
