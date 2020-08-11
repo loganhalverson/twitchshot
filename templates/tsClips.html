@@ -1,0 +1,119 @@
+{% extends 'tsBase.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static', filename='tsClips.css')}}">
+{% endblock %}
+
+{% block content %}
+<h1>{{game}}</h1>
+
+<div class="float_container">
+
+    <div class="float_child">
+        <div class="display_clip" id="display_clip_preview">
+            <iframe
+                id = "display_clip_embed"
+                src={{display_clip.embed}}
+                height='500'
+                width='780'
+                frameborder="0"
+                scrolling="no"
+                allowfullscreen="true">
+            </iframe>
+        </div>
+    </div>
+
+    <div class="float_child">
+        <div class="display_clip" id="display_clip_information">
+
+            <div class="info" id="title">
+                <p class="info_text">
+                    <strong>Title</strong><br>{{display_clip.title}} 
+                </p>
+            </div>
+
+            <div class="info" id="broadcaster">
+                <p class="info_text">
+                    <strong>Broadcaster</strong><br>{{display_clip.author}} 
+                </p>
+            </div>
+
+            <div class="info" id="views">
+                <p class="info_text">
+                    <strong>Views</strong><br>{{display_clip.views}} 
+                </p>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div style="clear: both;"></div>
+
+
+<div class="clip_table">
+    <ul id="clip_row">
+        {% for clip in clips %}
+            <li class="list_button">
+                {% if clip.valid == 'false' %}
+                    <button class="reject_clip" onclick=change({{loop.index0}})>
+                        <img src={{clip.thumbnail|safe}} alt='clip preview'>
+                    </button>
+                {% else %}
+                    <button class="clip" onclick=change({{loop.index0}})>
+                        <img src={{clip.thumbnail|safe}} alt='clip preview'>
+                    </button>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+
+<div id="button_container">
+    <div class="choice-buttons">
+        <form action="#" method="POST">
+
+            {{form.csrf_token}}
+
+            <div class="choice" id="approve">
+                {{form.approve._name}} {{form.approve}}
+            </div>
+
+            <div class="choice" id="reject">
+                {{form.reject._name}} {{form.reject}}
+            </div>
+
+            <div class="choice" id="true_submit">
+                {{form.submit._name}} {{form.submit}}
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+
+<script>
+    function change(clip_number){
+        var url = window.location.href
+        new_url = replaceIndex(url, '{{current_index|int}}', clip_number)
+        window.location.href = new_url
+    }
+</script>
+
+<script>
+    function replaceIndex(url, current_number, new_number) {
+
+        pos = url.lastIndexOf(current_number)
+        first_part = url.substr(0, pos)
+        new_url = first_part + new_number
+
+        return new_url
+
+    }
+</script>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'tsBase.html' %}
+
+{% block head %}
+<link rel="stylesheet" href="{{url_for('static', filename='tsIndex.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<div id='title_block'>
+    <h1>Twitchshot</h1>
+    
+    <p>
+        <a href="{{url_for('about')}}">Learn More</a>
+    </p>
+</div>
+
+<div id="input_block">
+    <form action="#" method="POST">
+        {{form.csrf_token}}
+        
+        <div class="userinput">
+            {{form.game_name.label}} 
+            {{form.game_name}}
+        </div>
+    
+        <br>
+        <div class="userinput">
+            {{form.clip_amount.label}}
+            {{form.clip_amount}}
+        </div>
+        
+        <br>
+        <div class="userinput">
+            {{form.time_range.label}}
+            {{form.time_range}}
+        </div>
+    
+        <br>
+        <div class="userinput"> <br>
+            {{form.submit}}
+        </div>
+    
+    </form>
+
+</div>
+{% endblock %}

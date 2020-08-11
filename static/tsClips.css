@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+	margin: 0;
+}
+
+body {
+	font-family: "Roboto", sans-serif;
+}
+
+.float_container {
+	background-color: #18181b;
+}
+
+#display_clip_preview {
+	border-width: 0px;
+	height: 500px;
+}
+
+.float_child {
+    margin-left: 20px;
+    float: left;
+}
+
+.clip_table {
+	display: inline-flex;
+	margin-left: 20px;
+}
+
+#clip_row {
+	margin-left: 0px;
+	margin-top: 20px;
+	padding-left: 0px;
+	display: grid;
+	grid-template-columns: repeat(5, 2fr);
+	gap: 5px;
+	list-style-type: none;
+	
+}
+
+.list_button {
+	width: 86px;
+	height: 45px;
+}
+
+.clip, .reject_clip{
+	padding: 0px;
+	border-width: 0px;
+	width: 86px;
+	height: 45px;
+}
+
+.reject_clip > img {
+	filter:grayscale(100%)
+}
