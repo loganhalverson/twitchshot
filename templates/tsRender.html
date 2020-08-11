@@ -1,0 +1,21 @@
+{% extends 'tsBase.html' %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+
+    <form action="#" method="POST">
+        {{form.csrf_token}}
+        
+        <div class="userinput">
+            {{form.name.label}} {{form.name}}
+        </div>
+
+        <div class="userinput">
+            {{form.submit(onclick="")}}
+        </div>
+
+    </form>
+    
+{% endblock %}
