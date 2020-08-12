@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 The date format is YYYY-MM-DD. The version format is X.Y.Z.
 
+## [0.2.0] - 2020-08-11
+
+### Added -
+- Flask Integration
+- HTML, CSS
+- videoEditor.py
+
+### Changed - 
+- Nearly everything.
+
+### Notes -
+I haven't been maintaining the changelog, as most of my development was local. I'll be working to 
+keep better track as of now, and for each merge to this repository I'll make notes in here about it.
+Regarding the last note, input validation has been implemented.
+
 ## [0.1.2] - 2020-07-22
 
 ### Added -
